@@ -1,0 +1,96 @@
+1. Intially describe how the program works:
+type 0: for no edge
+type 1: for edge
+type 2: in place of 1* for current edge, as part of matching
+
+You will initally be asked for 
+
+Options:
+
+2. Ask the user how many rows there are
+3. Ask the user how many coloumns there are
+
+4. Have user type the numbers (0,1,or 2) of Row 1 then press enter, to go to row 2
+5. Have user type 'done' to calculate:
+
+Maximum matching:
+-
+
+Minimum Covering:
+-Minimum covering is the 
+
+import numpy as np
+
+print("This program works as follows:")
+print("Type 0: for no edge")
+print("Type 1: for edge")
+print("Type 2: in place of 1* for current edge, as part of matching")
+
+rows = int(input("Enter the number of rows: "))
+cols = int(input("Enter the number of columns: "))
+
+matrix = []
+for i in range(rows):
+    row = list(map(int, input(f"Enter the numbers (0,1,or 2) for Row {i+1}: ").split()))
+    matrix.append(row)
+
+print("Type 'done' to calculate")
+command = input()
+if command.lower() == 'done':
+    # Here you should implement the calculation for Maximum matching and Minimum Covering
+    # As it's not clear from the pseudocode how these should be calculated, I'll leave it as a placeholder
+    print("Calculating Maximum matching and Minimum Covering...")
+    max_matching = 0
+    min_covering = 0
+    print(f"Maximum matching: {max_matching}")
+    print(f"Minimum covering: {min_covering}")
+
+
+
+
+
+For calculating after the user has inserted all of the rows
+
+Step 0.1 Assign a name (which will be a letter starting at A then going to B then C etc..) to each column 
+Step 0.2 Assign a name (which will be a number starting at 3 then going to 4 then 5 etc..) to each row
+*Note each of these coumns go through each of the rows
+
+Step 1 (start finding)
+Label (with a #) every column (For example column A has no 2 in it so I would put a # at the bottom of the column)
+Meaning (check all of these)
+if a column has no 2 then record the column 
+if 
+
+
+Step 2
+(scan and label)
+repeat (loop when needed)
+Step 2.1
+(scan columns)
+For each column that is labeled but not scanned, look at every 2 in that column. If such a 1 is in an unlabeled row, then label that row with the name of the column being scanned. Mark the column to indicate that it has been scanned.
+Step 2.2
+(scan rows)
+For each row that is labeled but not scanned, look for a 2 in that row. If there is a 2 in the row, then label the column containing the 2 with the name of the row being scanned. Mark the row to indicate that it has been scanned.
+until either some labeled row contains no 2 or all the labeled rows and all the labeled columns have been scanned
+Step 3
+(enlarge the independent set if possible) if some labeled row contains no 2
+Step 3.1 (backtracking)
+Find the first labeled row that contains no 2.
+Circle the 1 in this row and in the column that the row is labeled with. Circle the 2 in this column and the row that this column is labeled with. Then circle the un2 in this new row and in the column that this
+row is labeled with. 
+
+Continue in this manner until a 1 is circled in a column labeled in step 1.
+
+Step 3.2 (larger independent set)
+Reverse the Make all of those circled ones 2s and make the circled 2s 1s. 
+
+This gives an independent set of 1s with one more element than the original set.
+otherwise
+
+Step 3.3 (no improvement)
+The present independent set is a maximum independent set.
+
+
+and output the maximum independent
+
+*Note the maximum independent set is the same thing as a Maximum matching just a different name
