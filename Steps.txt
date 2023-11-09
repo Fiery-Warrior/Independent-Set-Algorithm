@@ -102,7 +102,21 @@ and output the maximum independent
 
 
 
+'''
+   A B C D 
+3 [2, 0, 1, 1]
+4 [0, 2, 0, 0]
+5 [1, 1, 0, 0]
+6 [0, 1, 0, 0]
 
+
+Would appear as:
+
+A [2, 0, 1, 0]
+B [0, 2, 1, 1]
+C [1, 0, 0, 0]
+D [1, 0, 0, 0]
+'''
 
 
 
@@ -142,3 +156,6 @@ Labeling with # on columns with no 2s (unstared 1s)::
 5 [1, 1, 0, 0]
 6 [0, 1, 0, 0]
             #  #
+
+
+

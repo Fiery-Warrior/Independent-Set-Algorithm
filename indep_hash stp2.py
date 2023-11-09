@@ -1,4 +1,4 @@
-# import numpy as np
+# import step2
 
 class IndependentSetAlgorithm:
     def __init__(self, rows, cols, matrix):
@@ -33,6 +33,39 @@ class IndependentSetAlgorithm:
         print("Put # (hashes) at bottom of columns:")
         for j in labeled_cols:
             print(f"{self.col_names[j]}")
+            
+        
+        # Step 2
+        labeled_rows = []
+        while True:
+            # Step 2.1
+            for j in labeled_cols:
+                if j not in labeled_cols:
+                    for i in range(self.rows):
+                        if self.matrix[i][j] == 2 and i not in labeled_rows:
+                            labeled_rows.append(i)
+                            self.matrix[i][j] = 3
+                            print(f"{self.row_names[i]}{self.col_names[j]}")
+
+                    labeled_cols.append(j)
+
+            # Step 2.2
+            for i in labeled_rows:
+                if i not in labeled_rows:
+                    for j in range(self.cols):
+                        if self.matrix[i][j] == 2 and j not in labeled_cols:
+                            labeled_cols.append(j)
+                            self.matrix[i][j] = 4
+                            print(f"{self.row_names[i]}{self.col_names[j]}")
+
+                    labeled_rows.append(i)
+
+            if all(2 not in self.matrix[i] for i in labeled_rows) or all(j in labeled_cols for j in range(self.cols)):
+                break
+        
+        # Step 3
+        print("Final matrix:")
+        print_matrix(self.matrix, self.row_names, self.col_names)
         
     def print_matrix(self):
         print("The matrix contains " + str(self.cols) + " columns and " + str(self.rows) + " rows.")
@@ -55,18 +88,3 @@ for i in range(rows):
 algorithm = IndependentSetAlgorithm(rows, cols, matrix)
 algorithm.print_matrix()
 algorithm.run_algorithm()
-'''
-   A B C D 
-3 [2, 0, 1, 1]
-4 [0, 2, 0, 0]
-5 [1, 1, 0, 0]
-6 [0, 1, 0, 0]
-
-
-Would appear as:
-
-A [2, 0, 1, 0]
-B [0, 2, 1, 1]
-C [1, 0, 0, 0]
-D [1, 0, 0, 0]
-'''
