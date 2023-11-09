@@ -94,3 +94,51 @@ The present independent set is a maximum independent set.
 and output the maximum independent
 
 *Note the maximum independent set is the same thing as a Maximum matching just a different name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note, in the future:
+
+I need to make it so that just like this line says, in step 1 it prints out how the new matrix will look showing the # at the bottom of the column when needed. just like the column name (for example 'A') is not part of the matrix but shows outside, make the # show on the outside of the matrix too and put it at the bottom of the column. For example it should look like this:
+
+Type 0: for no edge
+Type 1: for edge
+Type 2: in place of 1* for current edge, as part of matching
+Enter the number of rows: 4
+Enter the number of columns: 4
+Enter the numbers (0,1,or 2) for Row 1: 2 0 1 1
+Enter the numbers (0,1,or 2) for Row 2: 0 2 0 0
+Enter the numbers (0,1,or 2) for Row 3: 1 1 0 0
+Enter the numbers (0,1,or 2) for Row 4: 0 1 0 0
+Labeled matrix:
+   A B C D 
+3 [2, 0, 1, 1]
+4 [0, 2, 0, 0]
+5 [1, 1, 0, 0]
+6 [0, 1, 0, 0]
+Type 'done' to calculate
+done
+step 1:
+Labeling with # on columns with no 2s (unstared 1s)::
+    A  B  C  D 
+3 [2, 0, 1, 1]
+4 [0, 2, 0, 0]
+5 [1, 1, 0, 0]
+6 [0, 1, 0, 0]
+            #  #

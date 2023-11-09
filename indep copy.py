@@ -30,17 +30,44 @@ print("Type 'done' to calculate")
 command = input()
 if command.lower() == 'done':
     # Step 1
-    print("Step 1:")
-    print("Labeling with # on columns with no 2s (unstared 1s):")
+    print("step 1:")
+    print("Labeling with # on columns with no 2s (unstared 1s) ::")
     labeled_cols = []
     for j in range(cols):
         if 2 not in [matrix[i][j] for i in range(rows)]:
             labeled_cols.append(j)
-            print(f"#{col_names[j]}")
-    print("Show here the new matrix with the #s labeled on the columns directly below it")
+            print(f"#{col_names[j]}", end=" ")
+    print()
+    print("   ", end="")
+    for col in col_names:
+        print(col, end=" ")
+    print()
+    for i, row in enumerate(matrix):
+        print(f"{row_names[i]} [{', '.join(map(str, row))}]")
+    
+    # Step 1.1
+    new_matrix = []
+    for i in range(rows):
+        new_row = []
+        for j in range(cols):
+            if j in labeled_cols and matrix[i][j] == 1:
+                #replace 1 with #
+                new_row.append("#")
+            else:
+                new_row.append(matrix[i][j])
+        new_matrix.append(new_row)
+    
+    # Print new matrix
+    print("New matrix after step 1:")
+    print("   ", end="")
+    for col in col_names:
+        print(col, end=" ")
+    print()
+    for i, row in enumerate(new_matrix):
+        print(f"{row_names[i]} [{', '.join(map(str, row))}]")
 
     # Step 2
-    print("Step 2:")
+    print("\nStep 2:")
     labeled_rows = []
     while True:
         # Step 2.1
