@@ -1,6 +1,5 @@
 import numpy as np
 
-
 print("This program works as follows:")
 print("Type 0: for no edge")
 print("Type 1: for edge")
@@ -14,13 +13,22 @@ for i in range(rows):
     row = list(map(int, input(f"Enter the numbers (0,1,or 2) for Row {i+1}: ").split()))
     matrix.append(row)
 
+
+# Step 0.1
+col_names = [chr(i) for i in range(ord('A'), ord('A') + cols)]
+row_names = [i for i in range(3, 3 + rows)]
+
+print("Labeled matrix:")
+print("   ", end="")
+for col in col_names:
+    print(col, end=" ")
+print()
+for i, row in enumerate(matrix):
+    print(f"{row_names[i]} [{', '.join(map(str, row))}]")
+
 print("Type 'done' to calculate")
 command = input()
 if command.lower() == 'done':
-    # Step 0.1
-    col_names = [chr(i) for i in range(ord('A'), ord('A') + cols)]
-    row_names = [i for i in range(3, 3 + rows)]
-
     # Step 1
     labeled_cols = []
     for j in range(cols):
@@ -72,7 +80,9 @@ if command.lower() == 'done':
                     path.append((i, j))
                     break
 
-        while True:
+            if not path:
+                break
+
             i, j = path[-1]
             if matrix[i][j] == 1:
                 break
@@ -104,4 +114,20 @@ if command.lower() == 'done':
         for i in independent_set:
             print(f"{row_names[i]}")
     else:
+        print("No independent set found")        
+    if independent_set:
+        print("The present independent set is:")
+        for i in independent_set:
+            print(f"{row_names[i]}")
         print("The present independent set is a maximum independent set.")
+    else:
+        print("No independent set found")
+
+    # New look of the matrix after assigning names to columns and rows
+    print("New look of the matrix:")
+    print("   ", end="")
+    for col in col_names:
+        print(col, end=" ")
+    print()
+    for i, row in enumerate(matrix):
+        print(f"{row_names[i]} [{', '.join(map(str, row))}]")
