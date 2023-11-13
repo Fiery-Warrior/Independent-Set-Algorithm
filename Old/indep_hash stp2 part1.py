@@ -42,7 +42,7 @@ class IndependentSetAlgorithm:
             new_matrix.append(new_row)
         
         # Step 1.2
-        print("Labeled matrix with '#'s where there are no 2s in a column:")
+        print("\nLabeled matrix with '#'s where there are no 2s in a column:")
         print_matrix(new_matrix, self.row_names, self.col_names)
         print("Put # (hashes) at bottom of columns:")
         for j in labeled_cols:
@@ -83,7 +83,7 @@ class IndependentSetAlgorithm:
         
         Then Mark with a Name 'A' or 'B' or 'C' etc... (by putting the column with the # to indicate that it has been scanned) put the column name on the the row side on the right side of the matrix
         '''
-        print("\nStep 2: Label rows with # and put column names on the side of the row:")
+        print("\nStep 2.1: Label rows with # and put column names on the side of the row then mark the # with a checkmark to indicate that it has been scanned:")
         for i in range(self.rows):
             if "#" in new_matrix[i]:
                 col_index = new_matrix[i].index("#")
@@ -99,7 +99,7 @@ class IndependentSetAlgorithm:
         """
         Prints the matrix with row and column names.
         """
-        print("The matrix contains " + str(self.cols) + " columns and " + str(self.rows) + " rows.")
+        print("\nThe matrix contains " + str(self.cols) + " columns and " + str(self.rows) + " rows.\n")
         print_matrix(self.matrix, self.row_names, self.col_names)
 
 def print_matrix(matrix, row_names, col_names):

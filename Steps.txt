@@ -58,7 +58,7 @@ Step 0.2 Assign a name (which will be a number starting at 3 then going to 4 the
 Step 1 (start finding)
 Label (with a #) every column (For example column A has no 2 in it so I would put a # at the bottom of the column)
 Meaning (check all of these)
-if a column has no 2 then record the column 
+if a column has no 2 then record the column
 if 
 
 
