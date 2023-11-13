@@ -83,13 +83,14 @@ class IndependentSetAlgorithm:
         
         Then Mark with a Name 'A' or 'B' or 'C' etc... (by putting the column with the # to indicate that it has been scanned) put the column name on the the row side on the right side of the matrix
         '''
-        print("\nStep 2:")
+        print("\nStep 2: Label rows with # and put column names on the side of the row:")
         for i in range(self.rows):
             if "#" in new_matrix[i]:
                 col_index = new_matrix[i].index("#")
                 col_name = self.col_names[col_index]
                 row_name = self.row_names[i]
                 new_matrix[i][col_index] = col_name
+                print(f"Label row: {row_name} with the column name: {col_name}")
                 print(f"{row_name}{col_name}")
         
         # print_matrix(self.matrix, self.row_names, self.col_names)

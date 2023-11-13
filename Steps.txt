@@ -97,7 +97,34 @@ and output the maximum independent
 
 
 
+Current output shows as:
 
+Enter the number of rows: 4
+Enter the number of columns: 4
+Enter the numbers (0,1,or 2) for Row 1: 2 0 1 1
+Enter the numbers (0,1,or 2) for Row 2: 0 2 0 0
+Enter the numbers (0,1,or 2) for Row 3: 1 1 0 0
+Enter the numbers (0,1,or 2) for Row 4: 0 1 0 0
+The matrix contains 4 columns and 4 rows.
+   A  B  C  D 
+3 [2, 0, 1, 1]
+4 [0, 2, 0, 0]
+5 [1, 1, 0, 0]
+6 [0, 1, 0, 0]
+Labeled matrix with '#'s where there are no 2s in a column:
+   A  B  C  D 
+3 [2, 0, #, #]
+4 [0, 2, 0, 0]
+5 [1, 1, 0, 0]
+6 [0, 1, 0, 0]
+Put # (hashes) at bottom of columns:
+C
+D
+
+Step 2:
+Label rows with # and put column names on the side of the row:
+Label row: 3 with the column name: C
+3C
 
 
 
