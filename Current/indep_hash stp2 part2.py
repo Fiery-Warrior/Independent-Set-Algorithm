@@ -83,24 +83,28 @@ class IndependentSetAlgorithm:
         
         Then Mark with a Name 'A' or 'B' or 'C' etc... (by putting the column with the # to indicate that it has been scanned) put the column name on the the row side on the right side of the matrix
         '''
-        print("\nStep 2.1: Label the rows with # and put column names on the side of the row then mark the # with a checkmark to indicate that it has been scanned:")
+        # Step 2.1
+        print("\nStep 2.1: Label the rows with # and put column names outside the matrix (aligned on the side of the row) then as a user mark the # with a checkmark to indicate that it has been scanned:")
         for i in range(self.rows):
             if "#" in new_matrix[i]:
                 col_index = new_matrix[i].index("#")
                 col_name = self.col_names[col_index]
                 row_name = self.row_names[i]
-                # new_matrix[i][col_index] = col_name # this replaces '#' with column name
+                new_matrix[i][col_index] = "#" # keep the checkmark
                 print(f"Label row: {row_name} with the column name: {col_name}")
-                print(f"{row_name}{col_name}")
+                new_matrix[i].append(col_name) # add the column name to the end of the row
+                print(f"{row_name} {col_name}")
+            print_matrix(new_matrix, self.row_names, self.col_names)
+
+
         
         # print_matrix(self.matrix, self.row_names, self.col_names)
         print("**********Ignore*************************************************************")
         print("Some information about the matrix: new_matrix, self.row_names, self.col_names")
-        print_matrix(new_matrix, self.row_names, self.col_names)
         print("******************************************************************************")
 
 
-        print("\nStep 2.2: If a row has a # in it then go to the column that has a 2 and record which name of the row the 2 is in. Then put the name of the row at the bottom of that column:")
+        print("\nStep 2.2: Go to the row with a #. in it then go to the column that has a 2 and record which name of the row the 2 is in. Then put the name of the row at the bottom of that column:")
         for i in range(self.rows):
             if "#" in new_matrix[i]:
                 col_index = new_matrix[i].index("#")
@@ -110,8 +114,10 @@ class IndependentSetAlgorithm:
                         col_name = self.col_names[j]
                         print(f"row: {row_name} and column: {col_name}")
                         # new_matrix[self.rows-1][j] = row_name # this replaces the last 0 of the column 2 with row name
-                        print(f"write the name of row {row_name} at the bottom of column {col_name}")
+                        print(f"write the name of row {row_name} at the bottom of column {col_name} in other words write {row_name} at the bottom of the matrix at column {col_name}")
                         break
+
+                    #inside ALL columns with a 2 if there are 1s in that column then make sure that you mark the row with that 1 with the name of the column (this would be typed outside the matrix on the right side of the matrix)
         
         print_matrix(new_matrix, self.row_names, self.col_names)
         
