@@ -69,24 +69,6 @@ class IndependentSetAlgorithm:
         
         Then Mark with a Name 'A' or 'B' or 'C' etc... (by putting the column with the # to indicate that it has been scanned) put the column name on the the row side on the right side of the matrix
         '''
-        # Step 2.1
-        # right_side_column_names = [""] * self.rows
-        # print("\nStep 2.1: Label the rows with # and put column names outside the matrix (aligned on the side of the row) then as a user mark the # with a checkmark to indicate that it has been scanned:")
-        # for i in range(self.rows):
-        #     if "#" in new_matrix[i]:
-        #         col_index = new_matrix[i].index("#")
-        #         col_name = self.col_names[col_index]
-        #         row_name = self.row_names[i]
-        #         new_matrix[i][col_index] = "#" # keep the checkmark
-        #         print(f"Label row: {row_name} with the column name: {col_name}")
-
-        #         right_side_column_names[i] = col_name # set the column name at the correct index
-        #         print(" This is when I add the column name to the end of the row (need to change later so it is outside the matrix))")
-        #         # new_matrix[i].append(col_name) # add the column name to the end of the row
-        #         print(f"{row_name} {col_name}")
-        #     print_matrix(new_matrix, self.row_names, self.col_names, right_side_column_names)
-
-        # print_matrix(new_matrix, self.row_names, self.col_names, right_side_column_names)
         
         # Step 2.1
         right_side_column_names = [""] * self.rows
@@ -100,7 +82,9 @@ class IndependentSetAlgorithm:
                 new_matrix[i][col_index] = "#" # keep the checkmark
                 print(f"Label row: {row_name} with the column name: {col_name}")
                 right_side_column_names[i] = col_name # add the column name to the right side
-                bottom_row_names[col_index] = row_name # add the row name to the bottom
+                print(f"Column {col_index} is labeled with {col_name}") # print the column index and name
+                if '2' in new_matrix[i]:
+                    bottom_row_names[col_index] = row_name # add the row name to the bottom if '2' is in the row
                 print(f"{row_name} {col_name}")
 
         print_matrix(new_matrix, self.row_names, self.col_names, right_side_column_names, bottom_row_names)

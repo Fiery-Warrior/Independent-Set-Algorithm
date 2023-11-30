@@ -70,6 +70,27 @@ class IndependentSetAlgorithm:
         Then Mark with a Name 'A' or 'B' or 'C' etc... (by putting the column with the # to indicate that it has been scanned) put the column name on the the row side on the right side of the matrix
         '''
         # Step 2.1
+        # right_side_column_names = [""] * self.rows
+        # print("\nStep 2.1: Label the rows with # and put column names outside the matrix (aligned on the side of the row) then as a user mark the # with a checkmark to indicate that it has been scanned:")
+        # for i in range(self.rows):
+        #     if "#" in new_matrix[i]:
+        #         col_index = new_matrix[i].index("#")
+        #         col_name = self.col_names[col_index]
+        #         row_name = self.row_names[i]
+        #         new_matrix[i][col_index] = "#" # keep the checkmark
+        #         print(f"Label row: {row_name} with the column name: {col_name}")
+
+        #         right_side_column_names[i] = col_name # set the column name at the correct index
+        #         print(" This is when I add the column name to the end of the row (need to change later so it is outside the matrix))")
+        #         # new_matrix[i].append(col_name) # add the column name to the end of the row
+        #         print(f"{row_name} {col_name}")
+        #     print_matrix(new_matrix, self.row_names, self.col_names, right_side_column_names)
+
+        # print_matrix(new_matrix, self.row_names, self.col_names, right_side_column_names)
+        
+        # Step 2.1
+        right_side_column_names = [""] * self.rows
+        bottom_row_names = [""] * self.cols
         print("\nStep 2.1: Label the rows with # and put column names outside the matrix (aligned on the side of the row) then as a user mark the # with a checkmark to indicate that it has been scanned:")
         for i in range(self.rows):
             if "#" in new_matrix[i]:
@@ -78,10 +99,11 @@ class IndependentSetAlgorithm:
                 row_name = self.row_names[i]
                 new_matrix[i][col_index] = "#" # keep the checkmark
                 print(f"Label row: {row_name} with the column name: {col_name}")
-                new_matrix[i].append(col_name) # add the column name to the end of the row
+                right_side_column_names[i] = col_name # add the column name to the right side
+                bottom_row_names[col_index] = row_name # add the row name to the bottom
                 print(f"{row_name} {col_name}")
-            print_matrix(new_matrix, self.row_names, self.col_names)
 
+        print_matrix(new_matrix, self.row_names, self.col_names, right_side_column_names, bottom_row_names)
 
         
         # print_matrix(self.matrix, self.row_names, self.col_names)
@@ -119,23 +141,25 @@ class IndependentSetAlgorithm:
         print("\nThe matrix contains " + str(self.cols) + " columns and " + str(self.rows) + " rows.\n")
         print_matrix(self.matrix, self.row_names, self.col_names)
 
-# def print_matrix(matrix, row_names, col_names):
+
+# def print_matrix(matrix, row_names, col_names, bottom_row_names=None):
 #     print("   " + " ".join([f"{col_names[j]} " for j in range(len(col_names))]))
 #     for i in range(len(matrix)):
 #         print(f"{row_names[i]} [{', '.join(map(str, matrix[i]))}]")
+#     # Print the bottom row names
+#     if bottom_row_names:
+#         print("   " + " ".join([f"{bottom_row_names[j]} " for j in range(len(bottom_row_names))]))
 
 
-def print_matrix(matrix, row_names, col_names, bottom_row_names=None):
+
+
+def print_matrix(matrix, row_names, col_names, right_side_column_names=None, bottom_row_names=None):
     print("   " + " ".join([f"{col_names[j]} " for j in range(len(col_names))]))
     for i in range(len(matrix)):
-        print(f"{row_names[i]} [{', '.join(map(str, matrix[i]))}]")
+        print(f"{row_names[i]} [{', '.join(map(str, matrix[i]))}] {right_side_column_names[i] if right_side_column_names else ''}")
     # Print the bottom row names
     if bottom_row_names:
         print("   " + " ".join([f"{bottom_row_names[j]} " for j in range(len(bottom_row_names))]))
-
-
-
-
 
 # Program starts here
 rows = int(input("Enter the number of rows: "))
