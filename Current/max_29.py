@@ -19,7 +19,8 @@ def print_matrix(matrix):
         print(f"{i} {row}")
 
 def switch_matching(matrix, max_matching):
-    for match in max_matching[:-1]:  # Exclude the last match
+    # for match in max_matching[:-1]:  # Exclude the last match
+    for match in max_matching[:]:  # does not Exclude the last match
         row, col = match
         if matrix[row][col] == 0 or matrix[row][col] == 1:
             matrix[row][col] = 2
@@ -70,7 +71,8 @@ def main():
     max_matching = [(row, col) for row, col in zip(row_indices, col_indices)]
 
     print("\nMaximum Matching:")
-    for match in max_matching[:-1]:  # Exclude the last match
+    # for match in max_matching[:-1]:  # Exclude the last match
+    for match in max_matching[:]:  # does not Exclude the last match
         print(f"Row {match[0]+1} matches with Column {chr(65 + match[1])}")
 
     # Switch ones or zeros at maximum matching coordinates with 2s
