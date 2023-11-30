@@ -1,6 +1,15 @@
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+def find_coordinates_of_twos(matrix):
+    twos_coordinates = []
+    for i in range(matrix.shape[0]):
+        for j in range(matrix.shape[1]):
+            if matrix[i][j] == 2:
+                twos_coordinates.append((i, chr(65 + j)))
+    return twos_coordinates
+
+
 def create_bipartite_graph(matrix):
     row_count, col_count = matrix.shape
     graph = {}
@@ -19,10 +28,9 @@ def print_matrix(matrix):
         print(f"{i} {row}")
 
 def switch_matching(matrix, max_matching):
-    # for match in max_matching[:-1]:  # Exclude the last match
-    for match in max_matching[:]:  # does not Exclude the last match
+    for match in max_matching:
         row, col = match
-        if matrix[row][col] == 0 or matrix[row][col] == 1:
+        if matrix[row][col] == 1:
             matrix[row][col] = 2
     return matrix
 
@@ -71,16 +79,22 @@ def main():
     max_matching = [(row, col) for row, col in zip(row_indices, col_indices)]
 
     print("\nMaximum Matching:")
-    # for match in max_matching[:-1]:  # Exclude the last match
-    for match in max_matching[:]:  # does not Exclude the last match
+    for match in max_matching:  
         print(f"Row {match[0]+1} matches with Column {chr(65 + match[1])}")
 
-    # Switch ones or zeros at maximum matching coordinates with 2s
+    # Switch ones involved in maximum matching to twos
     updated_matrix = switch_matching(matrix.copy(), max_matching)
 
     # Display the updated matrix
     print("\nUpdated Matrix with Maximum Matching:")
     print_matrix(updated_matrix)
+
+
+    # Find coordinates of 2s in the updated matrix
+    twos_coordinates = find_coordinates_of_twos(updated_matrix)
+    print("\nActual Max Matching cordinates: Coordinates of '2's in Updated Matrix:")
+    for coordinate in twos_coordinates:
+        print(f"({coordinate[0]+1}, {coordinate[1]})")
 
     # Step 3: Find minimum covering
     coverings = find_minimum_coverings(updated_matrix)
