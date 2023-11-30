@@ -37,7 +37,8 @@ def switch_matching(matrix, max_matching):
 def get_user_input():
     rows = int(input("Enter the number of rows: "))
     cols = int(input("Enter the number of columns: "))
-    print("Enter the numbers ('1', 'stared 1', or '2') for each row:")
+    # print("Enter the numbers ('1', 'stared 1', or '2') for each row:")
+    print("Only enter '1's or 0's (If you have a 1* enter it as 1)")
     
     matrix = []
     for i in range(rows):
@@ -78,23 +79,31 @@ def main():
     row_indices, col_indices = linear_sum_assignment(matrix, maximize=True)
     max_matching = [(row, col) for row, col in zip(row_indices, col_indices)]
 
-    print("\nMaximum Matching:")
-    for match in max_matching:  
-        print(f"Row {match[0]+1} matches with Column {chr(65 + match[1])}")
+    # print("\n*************IGNORE***********")
+    # print("OLD Maximum Matching:")
+    # for match in max_matching:  
+    #     print(f"Row {match[0]+1} matches with Column {chr(65 + match[1])}")
+    # print("\n******************************")
+
 
     # Switch ones involved in maximum matching to twos
     updated_matrix = switch_matching(matrix.copy(), max_matching)
 
     # Display the updated matrix
-    print("\nUpdated Matrix with Maximum Matching:")
+    print("\nUpdated Matrix with a Maximum Matching:")
     print_matrix(updated_matrix)
 
 
     # Find coordinates of 2s in the updated matrix
     twos_coordinates = find_coordinates_of_twos(updated_matrix)
-    print("\nActual Max Matching cordinates: Coordinates of '2's in Updated Matrix:")
+    print("\nMax Matching cordinates: Coordinates of '2's in Updated Matrix:")
     for coordinate in twos_coordinates:
         print(f"({coordinate[0]+1}, {coordinate[1]})")
+
+    twos_coordinates = find_coordinates_of_twos(updated_matrix)
+    print("\nMax Matchings:")
+    for coordinate in twos_coordinates:
+        print(f"(Row: {coordinate[0]+1}, Column: {coordinate[1]})")
 
     # Step 3: Find minimum covering
     coverings = find_minimum_coverings(updated_matrix)
