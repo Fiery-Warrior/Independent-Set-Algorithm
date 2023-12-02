@@ -79,12 +79,6 @@ def main():
     row_indices, col_indices = linear_sum_assignment(matrix, maximize=True)
     max_matching = [(row, col) for row, col in zip(row_indices, col_indices)]
 
-    # print("\n*************IGNORE***********")
-    # print("OLD Maximum Matching:")
-    # for match in max_matching:  
-    #     print(f"Row {match[0]+1} matches with Column {chr(65 + match[1])}")
-    # print("\n******************************")
-
 
     # Switch ones involved in maximum matching to twos
     updated_matrix = switch_matching(matrix.copy(), max_matching)
