@@ -1,6 +1,12 @@
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+def print_maximum_matching(max_matching):
+    print("\nA Maximum Matching is:")
+    formatted_matching = ", ".join([f"{{{row+1}, {chr(65+col)}}}" for row, col in max_matching])
+    print(f"{{{formatted_matching}}}")
+
+
 def find_coordinates_of_twos(matrix):
     twos_coordinates = []
     for i in range(matrix.shape[0]):
@@ -51,7 +57,7 @@ def find_minimum_coverings(matrix):
     for i in range(matrix.shape[0]):
         for j in range(matrix.shape[1]):
             if matrix[i][j] == 2:
-                coverings.append(f"Row {i+1}")
+                # coverings.append(f"Row {i+1}")
                 coverings.append(f"Column {chr(65 + j)}")
                 break
     return coverings
@@ -68,6 +74,11 @@ def format_minimum_coverings(min_coverings):
             temp = set()
     return formatted_coverings
 
+def print_minimum_covering(min_coverings):
+    print("\nA Minimum Covering is:")
+    formatted_coverings = ", ".join(min_coverings)
+    print(f"{{{formatted_coverings}}}")
+
 def main():
     matrix = get_user_input()
     print_matrix(matrix)
@@ -78,12 +89,6 @@ def main():
     # Step 2: Perform maximum matching using ISA algorithm
     row_indices, col_indices = linear_sum_assignment(matrix, maximize=True)
     max_matching = [(row, col) for row, col in zip(row_indices, col_indices)]
-
-    # print("\n*************IGNORE***********")
-    # print("OLD Maximum Matching:")
-    # for match in max_matching:  
-    #     print(f"Row {match[0]+1} matches with Column {chr(65 + match[1])}")
-    # print("\n******************************")
 
 
     # Switch ones involved in maximum matching to twos
@@ -109,9 +114,18 @@ def main():
     coverings = find_minimum_coverings(updated_matrix)
     formatted_coverings = format_minimum_coverings(coverings)
     print(f"\nTotal number of Minimum Coverings: {len(formatted_coverings)}")
-    print("\nMinimum Coverings:")
-    for covering in formatted_coverings:
-        print(f"{covering}")
+    # print("\nA Minimum Covering:")
+    # for covering in formatted_coverings:
+    #     print(f"{covering}")
+    # Find Minimum Covering
+    min_coverings = format_minimum_coverings(coverings)
+    print_minimum_covering(min_coverings)
+
+
+    # Print the Maximum Matching
+    # print_maximum_matching(max_matching) ''' A Maximum Matching is: {{1, A}, {2, B}, {3, C}, {4, D}}'''
+
+
 
 if __name__ == "__main__":
     main()
